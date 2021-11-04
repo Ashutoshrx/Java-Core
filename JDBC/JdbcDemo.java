@@ -15,8 +15,8 @@ class JdbcDemo
 	{
 		
 		String url="jdbc:mysql://localhost:3306/mydb";
-		String username="root";
-		String pass="root";
+		String username="enter your usename-";
+		String pass="Enter your password-";
 		
 		//Quereis to be executed
 		String query1="select * from jdbc_prac;";
