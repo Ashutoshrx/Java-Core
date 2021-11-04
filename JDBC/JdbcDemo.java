@@ -13,7 +13,7 @@ class JdbcDemo
 {
 	public static void main(String[] args) throws Exception
 	{
-		
+		//mydb is the name of my database
 		String url="jdbc:mysql://localhost:3306/mydb";
 		String username="Enter your usename-";
 		String pass="Enter your password-";
