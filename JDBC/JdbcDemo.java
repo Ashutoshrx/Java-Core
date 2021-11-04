@@ -1,3 +1,7 @@
+/*@Author- Ashutosh Satapathy
+Software Develepment Engineer
+Date-04/11/21
+*/
 package JdbcPackage;
 
 import java.sql.Connection;
@@ -9,10 +13,12 @@ class JdbcDemo
 {
 	public static void main(String[] args) throws Exception
 	{
-		//Step1- Create connection
+		
 		String url="jdbc:mysql://localhost:3306/mydb";
 		String username="root";
 		String pass="root";
+		
+		//Quereis to be executed
 		String query1="select * from jdbc_prac;";
 		String query2="insert into jdbc_prac (id,fname,lname) values (4,'Ronnie','Satapathy');";
 		String query3="alter table jdbc_prac add primary key(id);";
@@ -20,26 +26,37 @@ class JdbcDemo
 		String query5="update jdbc_prac set salary=2500 where id=1;";
 		String query6="alter table jdbc_prac modify id int not null auto_increment;";
 		
-		//Step2-Load and register drivers
+		//Step1-Load and register drivers
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		//Step2- Create connection
 		Connection con= DriverManager.getConnection(url, username, pass);
+		
+		//Step3- Create Statement
 		Statement st= con.createStatement();
 		
+		//Step4-Execute
+		//Update/delete/insert operatrions
 		int res= st.executeUpdate(query6);
+		
+		//Step-5-Printing results
 		System.out.println(res+"->rows affected");
 		
-		/*long res= st.executeLargeUpdate(query4);
+		long res= st.executeLargeUpdate(query4);
 		System.out.println(res+"->updated");*/
 		
-		/*ResultSet res= st.executeQuery(query1);		
+		//select statement
+		ResultSet res= st.executeQuery(query1);	
+		
+		//Printing the table using while loop
 		String userdata="";
 		while(res.next())
 		{
 			userdata= res.getInt("id")+":"+res.getString("fname")+":"+res.getString("lname");
 			System.out.println(userdata);
-		}*/
+		}
 		
-		
+		//Step-6-Closing the connection
 		con.close();
 		
 	}
